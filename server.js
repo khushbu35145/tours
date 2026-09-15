@@ -38,12 +38,17 @@ app.use((err, req, res, next) => {
 
 const path = require('path');
 
-// Serve static assets in production if client build exists
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/dist')));
+// Serve static assets in production if build exists
+const fs = require('fs');
+const publicDistPath = fs.existsSync(path.join(__dirname, 'public'))
+  ? path.join(__dirname, 'public')
+  : path.join(__dirname, '../client/dist');
+
+if (fs.existsSync(publicDistPath)) {
+  app.use(express.static(publicDistPath));
   app.get('*', (req, res) => {
     if (!req.path.startsWith('/api')) {
-      res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
+      res.sendFile(path.resolve(publicDistPath, 'index.html'));
     }
   });
 }
