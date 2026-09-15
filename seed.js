@@ -195,7 +195,7 @@ const INITIAL_PACKAGES = [
     route: "Jaipur • Jodhpur • Jaisalmer • Sam Sand Dunes • Udaipur",
     price: "₹38,500",
     priceVal: 38500,
-    image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=900&q=80",
+    image: "/images/jodhpur_blue_city.jpg",
     description: "Immerse yourself in regal magnificence across Jaipur's pink palaces, Jodhpur's blue fort, Jaisalmer's golden desert dunes camp, and Udaipur's lake city.",
     highlights: [
       "Sunset Camel Safari & Luxury Swiss Tent Glamping in Jaisalmer Sam Dunes",

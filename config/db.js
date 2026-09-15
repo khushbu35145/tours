@@ -11,7 +11,7 @@ const connectDB = async () => {
     console.log(`[MongoDB Connected]: ${conn.connection.host}`);
   } catch (error) {
     global.isMongoConnected = false;
-    console.warn(`[MongoDB Warning]: MongoDB service unavailable on 127.0.0.1:27017. Operating in High-Performance In-Memory Data Mode.`);
+    console.warn(`[MongoDB Warning]: Could not connect to MongoDB (${error.message}). Operating in High-Performance In-Memory Data Mode.`);
   }
 };
 
