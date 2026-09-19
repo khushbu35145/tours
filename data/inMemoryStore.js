@@ -242,6 +242,42 @@ const INITIAL_PACKAGES = [
     exclusions: ["Airfare", "Personal temple offerings"],
     faqs: [{ q: "Is vegetarian food provided?", a: "Yes, pure sattvic and gourmet vegetarian dining is served." }],
     isFeatured: true
+  },
+  {
+    _id: "pkg-uttrakhand",
+    slug: "uttrakhand",
+    title: "uttrakhand",
+    category: "dehradun",
+    subcategory: "uttrakhand",
+    duration: "7 Days / 6 Nights",
+    daysCount: 7,
+    nightsCount: 6,
+    route: "Delhi • Agra • Jaipur",
+    price: "₹35,000",
+    priceVal: 35000,
+    image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=900&q=80",
+    description: "Uttarakhand classic tour itinerary.",
+    overview: "Explore Uttarakhand state beauty.",
+    highlights: ["Private chauffeur tour"],
+    isFeatured: true
+  },
+  {
+    _id: "pkg-masuri",
+    slug: "masuri",
+    title: "masuri",
+    category: "dehradun",
+    subcategory: "masuri",
+    duration: "7 Days / 6 Nights",
+    daysCount: 7,
+    nightsCount: 6,
+    route: "Delhi • Agra • Jaipur",
+    price: "₹35,000",
+    priceVal: 35000,
+    image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=900&q=80",
+    description: "hiii",
+    overview: "hiii",
+    highlights: ["Mussoorie mountain tour"],
+    isFeatured: true
   }
 ];
 
@@ -315,18 +351,59 @@ const INITIAL_CONTACTS = [
 ];
 
 const INITIAL_SETTINGS = {
-  siteName: "Safaré Journeys",
-  tagline: "Journeys That Become Memories",
+  siteName: "Real India Journey",
+  tagline: "Authentic Luxury India Travel & Tailor-Made Tours",
   phone: "+91 98765 43210",
-  email: "concierge@safarejourneys.com",
-  address: "Safaré House, C-Scheme, Jaipur, Rajasthan 302001, India",
-  whatsapp: "+919876543210",
+  email: "info@realindiajourney.com",
+  address: "Real India Journey House, C-Scheme, Jaipur, Rajasthan 302001, India",
+  whatsapp: "+918294312349",
+  whatsappNotifyPhone: "+918294312349",
+  whatsappEnableNotify: true,
+  whatsappApiKey: "4bef5daff4308994b8018be5eb20ff4f",
+  whatsappInstanceId: "instance1120",
+  whatsappProvider: "ultramsg",
   heroTitle: "Authentic Luxury India Travel",
   heroSubtitle: "Curated bespoke expeditions across royal Rajasthan, tranquil Kerala backwaters, and alpine Kashmir.",
-  statsTravelers: "15,000+",
-  statsTours: "1,200+",
+  statsTravelers: "50,000+",
+  statsTours: "1,500+",
   statsRating: "4.9/5",
-  statsYears: "18+"
+  statsYears: "15+",
+  homeHeroImage1: "/images/jodhpur_blue_city.jpg",
+  homeHeroImage2: "/images/jodhpur_jaswant_thada.jpg",
+  homeHeroImage3: "/images/rajasthan_hawa_mahal.jpg",
+  homeHeroImage4: "/images/rajasthan_thar_desert.jpg",
+  aboutHeroImage: "/images/about_hero.jpg",
+  contactHeroImage: "/images/contact_hero.jpg",
+  blogsHeroImage: "/images/blogs_hero.jpg",
+  packagesHeroImage: "/images/packages_hero.jpg",
+  categoriesHeroImage: "/images/categories_hero.jpg",
+  testimonialsHeroImage: "/images/testimonials_hero.jpg",
+  carRentalHeroImage: "/images/car_hero.jpg",
+  enquiryHeroImage: "/images/enquiry_hero.jpg",
+
+  seoHomeTitle: "Real India Journey | Luxury India Travel & Custom Tour Packages",
+  seoHomeKeywords: "luxury india travel, rajasthan tour packages, golden triangle tour, india luxury travel agency",
+  seoHomeDescription: "Experience authentic luxury travel across India. Tailor-made royal palace tours, Golden Triangle expeditions, wildlife safaris, and private chauffeur travel.",
+
+  seoAboutTitle: "About Us | Real India Journey - Premier Luxury Travel Concierge",
+  seoAboutKeywords: "about real india journey, luxury travel concierge india, royal tour operator",
+  seoAboutDescription: "Learn about Real India Journey, India's leading bespoke travel agency specializing in high-end royal heritage tours and custom luxury itineraries.",
+
+  seoPackagesTitle: "Bespoke Tour Packages | Real India Journey",
+  seoPackagesKeywords: "india holiday packages, rajasthan heritage tours, kerala backwaters tour, luxury india itineraries",
+  seoPackagesDescription: "Browse our handpicked collection of luxury India tour packages across Rajasthan, Kerala, Golden Triangle, Kashmir, and spiritual circuits.",
+
+  seoBlogsTitle: "India Travel Blog & Insider Guides | Real India Journey",
+  seoBlogsKeywords: "india travel blog, taj mahal travel tips, rajasthan travel guide, golden triangle itinerary",
+  seoBlogsDescription: "Read expert travel advice, secret monument guides, and cultural insights from Real India Journey's luxury travel concierges.",
+
+  seoCarTitle: "Luxury Car Rental & Chauffeur Services | Real India Journey",
+  seoCarKeywords: "luxury car rental india, innova crysta rental jaipur, tempo traveller rental delhi, private chauffeur tour india",
+  seoCarDescription: "Hire premium air-conditioned vehicles (Innova Crysta, Fortuner, Tempo Traveller) with professional English-speaking chauffeurs across India.",
+
+  seoContactTitle: "Contact Us & Plan Your Journey | Real India Journey",
+  seoContactKeywords: "contact real india journey, plan india tour, luxury travel inquiry",
+  seoContactDescription: "Get in touch with Real India Journey's luxury travel specialists to craft your personalized trip to India."
 };
 
 const INITIAL_BLOGS = [
@@ -443,8 +520,91 @@ const INITIAL_CARS = [
   }
 ];
 
+const INITIAL_CATEGORIES = [
+  {
+    _id: "cat-1",
+    name: "Golden Triangle & Heritage",
+    slug: "golden-triangle",
+    description: "Classic cultural trail covering imperial Delhi, the iconic Taj Mahal in Agra, and royal Jaipur.",
+    image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80",
+    badge: "Most Popular",
+    status: "active",
+    subcategories: [
+      { _id: "sub-101", name: "Same Day Agra Express", slug: "same-day-agra", description: "Express day tours via highway or Gatimaan train.", status: "active" },
+      { _id: "sub-102", name: "3-Day Golden Triangle", slug: "3-day-golden-triangle", description: "Short weekend luxury escape across 3 cities.", status: "active" },
+      { _id: "sub-103", name: "5-Day Heritage Classic", slug: "5-day-heritage-classic", description: "In-depth monuments and palace experiences.", status: "active" }
+    ]
+  },
+  {
+    _id: "cat-2",
+    name: "Rajasthan Forts & Palaces",
+    slug: "rajasthan",
+    description: "Royal desert kingdom of grand hilltop forts, blue alleyways, romantic lakes, and sand dunes.",
+    image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=800&q=80",
+    badge: "Heritage Royal",
+    status: "active",
+    subcategories: [
+      { _id: "sub-201", name: "Jodhpur & Marwar Circuit", slug: "jodhpur-marwar", description: "Mehrangarh Fort, Jaswant Thada & Blue City tours.", status: "active" },
+      { _id: "sub-202", name: "Udaipur Lake Palaces", slug: "udaipur-lakes", description: "Lake Pichola boat cruises and romantic palaces.", status: "active" },
+      { _id: "sub-203", name: "Jaisalmer Desert Glamping", slug: "jaisalmer-desert", description: "Golden Sand Dunes camel safari and luxury tents.", status: "active" }
+    ]
+  },
+  {
+    _id: "cat-3",
+    name: "Wildlife & Desert Safaris",
+    slug: "wildlife",
+    description: "Thrill open 4x4 jeep safaris into tiger reserves and golden Thar desert expeditions.",
+    image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80",
+    badge: "Adventure Special",
+    status: "active",
+    subcategories: [
+      { _id: "sub-301", name: "Ranthambore Tiger Safaris", slug: "ranthambore-tiger-safari", description: "Guaranteed core zone jeep safaris.", status: "active" },
+      { _id: "sub-302", name: "Thar Desert Glamping", slug: "thar-desert-safari", description: "Open jeep dunes bashing and folk cultural nights.", status: "active" }
+    ]
+  },
+  {
+    _id: "cat-5",
+    name: "dehradun",
+    slug: "dehradun",
+    description: "Dehradun & Uttarakhand hill station experiences.",
+    badge: "Popular Destination",
+    status: "active",
+    subcategories: [
+      { _id: "sub-501", name: "uttrakhand", slug: "uttrakhand", description: "Uttarakhand state tours", status: "active" },
+      { _id: "sub-502", name: "masuri", slug: "masuri", description: "Mussoorie hill station packages", status: "active" }
+    ]
+  },
+  {
+    _id: "cat-6",
+    name: "bihar",
+    slug: "bihar",
+    description: "Historic & Spiritual Bihar Heritage.",
+    badge: "Heritage Special",
+    status: "active",
+    subcategories: [
+      { _id: "sub-601", name: "patna", slug: "patna", description: "Patna heritage & culture", status: "active" }
+    ]
+  },
+  {
+    _id: "cat-4",
+    name: "Spiritual & Pilgrimage Tours",
+    slug: "spiritual",
+    description: "Soul-stirring journeys along sacred rivers, ancient ghats, and divine marble temples.",
+    image: "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=800&q=80",
+    badge: "Soulful Experience",
+    status: "active",
+    subcategories: [
+      { _id: "sub-401", name: "Varanasi Ganges Aarti", slug: "varanasi-ganges", description: "Sunset Ganga Aarti boat ride and ghat walking tours.", status: "active" },
+      { _id: "sub-402", name: "Pushkar & Mount Abu", slug: "pushkar-mount-abu", description: "Holy Pushkar lake ghats & Dilwara marble temples.", status: "active" }
+    ]
+  }
+];
+
+
+
 class InMemoryStore {
   constructor() {
+    this.categories = [...INITIAL_CATEGORIES];
     this.packages = [...INITIAL_PACKAGES];
     this.testimonials = [...INITIAL_TESTIMONIALS];
     this.enquiries = [...INITIAL_ENQUIRIES];
@@ -454,9 +614,9 @@ class InMemoryStore {
     this.settings = { ...INITIAL_SETTINGS };
     this.adminUser = {
       _id: "admin-1",
-      name: "Safaré Admin Concierge",
-      email: "admin@safare.com",
-      passwordHash: bcrypt.hashSync("admin123", 10),
+      name: "Real India Journey Admin",
+      email: "admin@realindiajourney.com",
+      passwordHash: bcrypt.hashSync("admin1234", 10),
       role: "admin"
     };
   }

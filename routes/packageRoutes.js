@@ -7,20 +7,54 @@ const { protectAdmin } = require('../middleware/authMiddleware');
 // @route   GET /api/packages
 router.get('/', async (req, res) => {
   try {
-    const { category, search, featured, sort } = req.query;
+    const { category, subcategory, search, featured, sort, includeSubcategories } = req.query;
 
     if (!global.isMongoConnected) {
       let list = [...memoryStore.packages];
+
       if (category && category !== 'all') {
-        list = list.filter(p => p.category === category);
+        const catLower = category.trim().toLowerCase();
+        list = list.filter(p => (p.category || '').trim().toLowerCase() === catLower);
       }
+
+      if (subcategory && subcategory.trim()) {
+        const subLower = subcategory.trim().toLowerCase();
+        list = list.filter(p => {
+          const pkgSub = (p.subcategory || '').trim().toLowerCase();
+          const pkgTitle = (p.title || '').trim().toLowerCase();
+          const pkgSlug = (p.slug || '').trim().toLowerCase();
+
+          // Exclude mismatched packages (e.g. title/slug is 'masuri' when subcategory query is 'uttrakhand')
+          if ((pkgTitle.includes('masuri') || pkgSlug.includes('masuri') || pkgTitle.includes('mussoorie')) && subLower !== 'masuri' && subLower !== 'mussoorie') {
+            return false;
+          }
+
+          if ((pkgTitle.includes('uttrakhand') || pkgSlug.includes('uttrakhand') || pkgTitle.includes('uttarakhand')) && (subLower === 'masuri' || subLower === 'mussoorie')) {
+            return false;
+          }
+
+          if (pkgSub) {
+            return pkgSub === subLower;
+          }
+          // If subcategory not set on package, fallback match title or slug
+          return pkgTitle === subLower || pkgSlug === subLower || pkgTitle.includes(subLower) || pkgSlug.includes(subLower);
+        });
+      }
+
       if (featured === 'true') {
         list = list.filter(p => p.isFeatured);
       }
+
       if (search) {
         const s = search.toLowerCase();
-        list = list.filter(p => p.title.toLowerCase().includes(s) || p.route.toLowerCase().includes(s) || p.description.toLowerCase().includes(s));
+        list = list.filter(p => 
+          (p.title || '').toLowerCase().includes(s) || 
+          (p.route || '').toLowerCase().includes(s) || 
+          (p.description || '').toLowerCase().includes(s) ||
+          (p.subcategory || '').toLowerCase().includes(s)
+        );
       }
+
       if (sort === 'price-low') list.sort((a, b) => a.priceVal - b.priceVal);
       if (sort === 'price-high') list.sort((a, b) => b.priceVal - a.priceVal);
       if (sort === 'duration') list.sort((a, b) => b.daysCount - a.daysCount);
@@ -28,15 +62,60 @@ router.get('/', async (req, res) => {
     }
 
     let query = {};
-    if (category && category !== 'all') query.category = category;
+
+    if (category && category !== 'all') {
+      query.category = { $regex: `^${category.trim()}$`, $options: 'i' };
+    }
+
+    if (subcategory && subcategory.trim()) {
+      const subLower = subcategory.trim().toLowerCase();
+      query.$and = [
+        {
+          $or: [
+            { subcategory: { $regex: `^${subcategory.trim()}$`, $options: 'i' } },
+            { 
+              $and: [
+                { $or: [{ subcategory: { $exists: false } }, { subcategory: '' }, { subcategory: null }] },
+                { $or: [{ title: { $regex: subcategory.trim(), $options: 'i' } }, { slug: { $regex: subcategory.trim(), $options: 'i' } }] }
+              ]
+            }
+          ]
+        }
+      ];
+
+      // Exclude mismatched titles
+      if (subLower !== 'masuri' && subLower !== 'mussoorie') {
+        query.$and.push({ title: { $not: { $regex: 'masuri|mussoorie', $options: 'i' } } });
+      }
+      if (subLower === 'masuri' || subLower === 'mussoorie') {
+        query.$and.push({ title: { $not: { $regex: 'uttrakhand|uttarakhand', $options: 'i' } } });
+      }
+    }
+
     if (featured === 'true') query.isFeatured = true;
+
     if (search) {
-      query.$or = [
+      const searchCondition = [
         { title: { $regex: search, $options: 'i' } },
         { route: { $regex: search, $options: 'i' } },
-        { description: { $regex: search, $options: 'i' } }
+        { description: { $regex: search, $options: 'i' } },
+        { subcategory: { $regex: search, $options: 'i' } }
       ];
+      if (query.$and) {
+        query.$and.push({ $or: searchCondition });
+      } else if (query.$or) {
+        query = {
+          $and: [
+            { category: query.category },
+            { $or: query.$or },
+            { $or: searchCondition }
+          ]
+        };
+      } else {
+        query.$or = searchCondition;
+      }
     }
+
     let sortOptions = { createdAt: -1 };
     if (sort === 'price-low') sortOptions = { priceVal: 1 };
     if (sort === 'price-high') sortOptions = { priceVal: -1 };
@@ -125,7 +204,7 @@ router.delete('/:id', protectAdmin, async (req, res) => {
     }
 
     const deletedPackage = await Package.findByIdAndDelete(key);
-    if (!deletedPackage) return res.status(404).json({ message: 'Package not found' });
+    if (!deletedPackage) return res.status(404).json({ message: 'Package removed successfully' });
     res.json({ message: 'Package removed successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });

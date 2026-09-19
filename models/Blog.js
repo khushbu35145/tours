@@ -11,7 +11,12 @@ const blogSchema = new mongoose.Schema({
   excerpt: { type: String, required: true },
   content: { type: String, required: true },
   isPublished: { type: Boolean, default: true },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+
+  // SEO Metadata
+  seoTitle: { type: String, default: '' },
+  seoKeywords: { type: String, default: '' },
+  seoDescription: { type: String, default: '' }
 });
 
 module.exports = mongoose.model('Blog', blogSchema);

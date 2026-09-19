@@ -18,7 +18,12 @@ const packageSchema = new mongoose.Schema({
   category: { 
     type: String, 
     required: true, 
-    enum: ['heritage', 'luxury', 'honeymoon', 'family', 'adventure', 'spiritual'] 
+    trim: true
+  },
+  subcategory: {
+    type: String,
+    default: '',
+    trim: true
   },
   duration: { type: String, required: true },
   daysCount: { type: Number, required: true },
@@ -35,9 +40,13 @@ const packageSchema = new mongoose.Schema({
   meals: { type: String },
   itinerary: [itineraryItemSchema],
   inclusions: [{ type: String }],
-  exclusions: [{ type: String }],
   faqs: [faqItemSchema],
-  isFeatured: { type: Boolean, default: false }
+  isFeatured: { type: Boolean, default: false },
+
+  // SEO Metadata
+  seoTitle: { type: String, default: '' },
+  seoKeywords: { type: String, default: '' },
+  seoDescription: { type: String, default: '' }
 }, {
   timestamps: true
 });

@@ -23,6 +23,7 @@ app.use('/api/contacts', require('./routes/contactRoutes'));
 app.use('/api/testimonials', require('./routes/testimonialRoutes'));
 app.use('/api/blogs', require('./routes/blogRoutes'));
 app.use('/api/cars', require('./routes/carRoutes'));
+app.use('/api/categories', require('./routes/categoryRoutes'));
 app.use('/api/settings', require('./routes/settingRoutes'));
 
 // Health check endpoint

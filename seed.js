@@ -319,10 +319,10 @@ const seedData = async () => {
     await User.create({
       name: 'Real India Journey Concierge',
       email: 'admin@realindiajourney.com',
-      password: 'admin123',
+      password: 'admin1234',
       role: 'admin'
     });
-    console.log(`[Seed]: Admin Created -> Email: admin@realindiajourney.com | Pass: admin123`);
+    console.log(`[Seed]: Admin Created -> Email: admin@realindiajourney.com | Pass: admin1234`);
 
     // Seed Packages
     await Package.deleteMany();

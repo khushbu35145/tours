@@ -3,6 +3,7 @@ const router = express.Router();
 const Enquiry = require('../models/Enquiry');
 const memoryStore = require('../data/inMemoryStore');
 const { protectAdmin } = require('../middleware/authMiddleware');
+const { sendWhatsAppBookingNotification } = require('../utils/whatsappService');
 
 router.post('/', async (req, res) => {
   try {
@@ -14,6 +15,10 @@ router.post('/', async (req, res) => {
         createdAt: new Date().toISOString()
       };
       memoryStore.enquiries.unshift(newEnq);
+      
+      // Trigger WhatsApp Alert for Admin
+      sendWhatsAppBookingNotification(newEnq);
+
       return res.status(201).json({
         success: true,
         message: 'Enquiry submitted successfully! Our luxury concierge will contact you within 2 hours.',
@@ -23,6 +28,10 @@ router.post('/', async (req, res) => {
 
     const enquiry = new Enquiry(req.body);
     const saved = await enquiry.save();
+
+    // Trigger WhatsApp Alert for Admin
+    sendWhatsAppBookingNotification(saved);
+
     res.status(201).json({
       success: true,
       message: 'Enquiry submitted successfully! Our luxury concierge will contact you within 2 hours.',

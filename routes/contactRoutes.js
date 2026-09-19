@@ -3,6 +3,7 @@ const router = express.Router();
 const Contact = require('../models/Contact');
 const memoryStore = require('../data/inMemoryStore');
 const { protectAdmin } = require('../middleware/authMiddleware');
+const { sendWhatsAppContactNotification } = require('../utils/whatsappService');
 
 router.post('/', async (req, res) => {
   try {
@@ -14,6 +15,10 @@ router.post('/', async (req, res) => {
         createdAt: new Date().toISOString()
       };
       memoryStore.contacts.unshift(newCnt);
+
+      // Trigger WhatsApp Alert for Admin
+      sendWhatsAppContactNotification(newCnt);
+
       return res.status(201).json({
         success: true,
         message: 'Message sent successfully! We will get back to you shortly.',
@@ -23,6 +28,10 @@ router.post('/', async (req, res) => {
 
     const contact = new Contact(req.body);
     const saved = await contact.save();
+
+    // Trigger WhatsApp Alert for Admin
+    sendWhatsAppContactNotification(saved);
+
     res.status(201).json({
       success: true,
       message: 'Message sent successfully! We will get back to you shortly.',

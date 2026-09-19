@@ -61,4 +61,39 @@ router.get('/me', protectAdmin, async (req, res) => {
   }
 });
 
+// @route   PUT /api/auth/credentials
+router.put('/credentials', protectAdmin, async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Both Email and Password are required' });
+    }
+
+    if (!global.isMongoConnected) {
+      memoryStore.adminUser.email = email.trim().toLowerCase();
+      memoryStore.adminUser.passwordHash = bcrypt.hashSync(password, 10);
+      return res.json({
+        message: 'Admin ID & Password updated successfully',
+        email: memoryStore.adminUser.email
+      });
+    }
+
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).json({ message: 'Admin user record not found' });
+    }
+
+    user.email = email.trim().toLowerCase();
+    user.password = password;
+    await user.save();
+
+    res.json({
+      message: 'Admin ID & Password updated successfully',
+      email: user.email
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 module.exports = router;
