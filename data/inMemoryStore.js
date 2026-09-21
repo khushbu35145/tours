@@ -363,7 +363,7 @@ const INITIAL_SETTINGS = {
   whatsappInstanceId: "instance1120",
   whatsappProvider: "ultramsg",
   heroTitle: "Authentic Luxury India Travel",
-  heroSubtitle: "Curated bespoke expeditions across royal Rajasthan, tranquil Kerala backwaters, and alpine Kashmir.",
+  heroSubtitle: "Curated Real India Journey expeditions across royal Rajasthan, tranquil Kerala backwaters, and alpine Kashmir.",
   statsTravelers: "50,000+",
   statsTours: "1,500+",
   statsRating: "4.9/5",
@@ -378,7 +378,7 @@ const INITIAL_SETTINGS = {
   packagesHeroImage: "/images/packages_hero.jpg",
   categoriesHeroImage: "/images/categories_hero.jpg",
   testimonialsHeroImage: "/images/testimonials_hero.jpg",
-  carRentalHeroImage: "/images/car_hero.jpg",
+  carRentalHeroImage: "/images/van2.png",
   enquiryHeroImage: "/images/enquiry_hero.jpg",
 
   seoHomeTitle: "Real India Journey | Luxury India Travel & Custom Tour Packages",
@@ -387,9 +387,9 @@ const INITIAL_SETTINGS = {
 
   seoAboutTitle: "About Us | Real India Journey - Premier Luxury Travel Concierge",
   seoAboutKeywords: "about real india journey, luxury travel concierge india, royal tour operator",
-  seoAboutDescription: "Learn about Real India Journey, India's leading bespoke travel agency specializing in high-end royal heritage tours and custom luxury itineraries.",
+  seoAboutDescription: "Learn about Real India Journey, India's leading luxury travel agency specializing in high-end royal heritage tours and custom luxury itineraries.",
 
-  seoPackagesTitle: "Bespoke Tour Packages | Real India Journey",
+  seoPackagesTitle: "Real India Journey Tour Packages",
   seoPackagesKeywords: "india holiday packages, rajasthan heritage tours, kerala backwaters tour, luxury india itineraries",
   seoPackagesDescription: "Browse our handpicked collection of luxury India tour packages across Rajasthan, Kerala, Golden Triangle, Kashmir, and spiritual circuits.",
 

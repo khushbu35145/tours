@@ -13,7 +13,7 @@ const settingSchema = new mongoose.Schema({
   whatsappInstanceId: { type: String, default: "" },
   whatsappProvider: { type: String, default: "callmebot" },
   heroTitle: { type: String, default: "Authentic Luxury India Travel" },
-  heroSubtitle: { type: String, default: "Curated bespoke expeditions across royal Rajasthan, tranquil Kerala backwaters, and alpine Kashmir." },
+  heroSubtitle: { type: String, default: "Curated Real India Journey expeditions across royal Rajasthan, tranquil Kerala backwaters, and alpine Kashmir." },
   statsTravelers: { type: String, default: "50,000+" },
   statsTours: { type: String, default: "1,500+" },
   statsRating: { type: String, default: "4.9/5" },
@@ -30,7 +30,7 @@ const settingSchema = new mongoose.Schema({
   packagesHeroImage: { type: String, default: "/images/packages_hero.jpg" },
   categoriesHeroImage: { type: String, default: "/images/categories_hero.jpg" },
   testimonialsHeroImage: { type: String, default: "/images/testimonials_hero.jpg" },
-  carRentalHeroImage: { type: String, default: "/images/car_hero.jpg" },
+  carRentalHeroImage: { type: String, default: "/images/van2.png" },
   enquiryHeroImage: { type: String, default: "/images/enquiry_hero.jpg" },
 
   // Global & Page-wise SEO Meta Tags
@@ -40,9 +40,9 @@ const settingSchema = new mongoose.Schema({
 
   seoAboutTitle: { type: String, default: "About Us | Real India Journey - Premier Luxury Travel Concierge" },
   seoAboutKeywords: { type: String, default: "about real india journey, luxury travel concierge india, royal tour operator" },
-  seoAboutDescription: { type: String, default: "Learn about Real India Journey, India's leading bespoke travel agency specializing in high-end royal heritage tours and custom luxury itineraries." },
+  seoAboutDescription: { type: String, default: "Learn about Real India Journey, India's leading luxury travel agency specializing in high-end royal heritage tours and custom luxury itineraries." },
 
-  seoPackagesTitle: { type: String, default: "Bespoke Tour Packages | Real India Journey" },
+  seoPackagesTitle: { type: String, default: "Real India Journey Tour Packages" },
   seoPackagesKeywords: { type: String, default: "india holiday packages, rajasthan heritage tours, kerala backwaters tour, luxury india itineraries" },
   seoPackagesDescription: { type: String, default: "Browse our handpicked collection of luxury India tour packages across Rajasthan, Kerala, Golden Triangle, Kashmir, and spiritual circuits." },
 
