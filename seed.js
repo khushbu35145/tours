@@ -339,10 +339,10 @@ const seedData = async () => {
     await Setting.create({
       siteName: "Real India Journey",
       tagline: "Explore Authentic India with Premier Comfort & Royal Hospitality",
-      phone: "+91 98765 43210",
+      phone: "+91 96496 05100",
       email: "info@realindiajourney.com",
-      address: "Real India Journey Office, Near Taj Mahal Eastern Gate, Agra & CP, New Delhi, India",
-      whatsapp: "+919876543210",
+      address: "Plot No - 41, Dev Nagar, Digari Kalan, Jodhpur, Rajasthan 342015",
+      whatsapp: "+91 96496 05100",
       heroTitle: "Discover the Magic of India with Real India Journey",
       heroSubtitle: "Government Authorized Tour Operator specializing in Golden Triangle Tours, Same Day Taj Mahal Expeditions, Rajasthan Forts, and Private Car Rentals.",
       statsTravelers: "25,000+",

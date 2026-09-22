@@ -30,7 +30,7 @@ async function sendWhatsAppBookingNotification(enquiryData) {
       return false;
     }
 
-    const rawPhone = settings.whatsappNotifyPhone || settings.whatsapp || '+919876543210';
+    const rawPhone = settings.whatsappNotifyPhone || settings.whatsapp || '+919649605100';
     const recipientPhone = rawPhone.replace(/[^0-9]/g, ''); // strip non-digits
 
     const name = enquiryData.fullName || enquiryData.name || 'Guest';
@@ -123,7 +123,7 @@ async function sendWhatsAppContactNotification(contactData) {
     const settings = await getSettings();
     if (settings.whatsappEnableNotify === false) return false;
 
-    const rawPhone = settings.whatsappNotifyPhone || settings.whatsapp || '+919876543210';
+    const rawPhone = settings.whatsappNotifyPhone || settings.whatsapp || '+919649605100';
     const recipientPhone = rawPhone.replace(/[^0-9]/g, '');
     const name = contactData.name || contactData.fullName || 'Visitor';
     const phone = contactData.phone || 'N/A';
